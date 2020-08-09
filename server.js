@@ -107,9 +107,9 @@ app.post("/contact-us",(req,res)=>{
     })
 
 
-    const PORT = 3000;
 
-    app.listen(PORT,()=>{
+
+    app.listen(process.env.PORT,()=>{
         console.log(`The Web Server is up and running`);
      });
 
