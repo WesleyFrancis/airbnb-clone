@@ -3,7 +3,7 @@ const exphbs = require("express-handlebars");
 const bodyParser = require("body-parser");
 const roomModel = require("./models/rooms.js");
 require('dotenv').config({path:"config/keys.env"})// defaults is to create a file called .env and place it on the root
-
+const db = require("./config/MySQLDAO.js");
 const app = express();
 
 app.engine("handlebars",exphbs());
@@ -33,7 +33,7 @@ app.get("/",(req,res)=>{
 
 
 app.get("/room-listing",(req,res)=>{
-   
+      
       res.render("roomListing",{
 
         title : "Room Listing | Ugly Airbnb App",
@@ -64,7 +64,7 @@ app.post("/contact-us",(req,res)=>{
         {
                 body: `Hi  ${req.body.firstName}  ${req.body.lastName}  . Thank you for registering with AirBNB. Someone from our company
                 will contact you shortly!!!! `,
-                from: '+14246250342', 
+                from: '+12053580321', 
                 to: `${req.body.phone}`
         })
        
@@ -79,7 +79,7 @@ app.post("/contact-us",(req,res)=>{
               .create({
                  url: 'http://demo.twilio.com/docs/voice.xml',
                  to: `${req.body.phone}`,
-                 from: '+14246250342'
+                 from: '+12053580321'
                })
               .then(call => 
                 {
@@ -107,10 +107,9 @@ app.post("/contact-us",(req,res)=>{
     })
 
 
-
-
     const PORT = 3000;
 
     app.listen(PORT,()=>{
         console.log(`The Web Server is up and running`);
-    });
+     });
+
