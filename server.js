@@ -107,7 +107,11 @@ app.post("/contact-us",(req,res)=>{
     })
 
 
+    app.get("/ticks",(req,res)=>{
+        console.log(req);
+        res.send("You hit mehh");
 
+    });
 
     app.listen(process.env.PORT,()=>{
         console.log(`The Web Server is up and running`);
